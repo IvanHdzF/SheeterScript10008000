@@ -1,0 +1,14 @@
+SheeterScript10008000 is a state of the art script made in python
+using the most recent simulation techonology (courtesy of gcsim)
+to make the proccess of weapon comparing much easier:
+
+Instructions:
+1.-Have a config file with the name of the character you wish to do weapon comparisons
+2.-Run 
+pip install -r requirements.txt
+on the root folder
+3.-Add the most recent gcsim.exe on the root
+.-Run the scripts in order:
+-writer makes the configs you want to use
+-optimizer handles the subs
+-runner displays them in a table
