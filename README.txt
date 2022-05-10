@@ -6,9 +6,7 @@ Instructions:
 1.-Have a config file with the name of the character you wish to do weapon comparisons
 2.-Run 
 pip install -r requirements.txt
-on the root folder
+on the root folder (CMD)
 3.-Add the most recent gcsim.exe on the root
-.-Run the scripts in order:
--writer makes the configs you want to use
--optimizer handles the subs
--runner displays them in a table
+4.-Run
+python SS18.py
