@@ -16,7 +16,65 @@ sands=["hp%=0.466","atk%=0.466","def%=0.466","er=0.518","em=186.5"]
 goblets=["hp%=0.466","atk%=0.466","def%=0.466","em=186.5","anemo%=0.466","cryo%=0.466","electro%=0.466","geo%=0.466","hydro%=0.466","pyro%=0.466","phys%=0.466"]
 circlets=["hp%=0.466","atk%=0.466","def%=0.466","em=186.5","cr=0.311","cd=0.622","heal=0.359"]
 
-weapontype = easygui.enterbox("Please input the type of weapon to do the comparison with:\n1 for bows\n2 for catalysts\n3 for claymores\n4 for polearms\n5 for swords" ,"Enter your weapon type (NUMBER ONLY)")
+#-----------------Weapon type characters arrays----------------------#
+bowusers=[
+  'aloy',       'amber',
+  'diona',      'fischl',
+  'ganyu',      'gorou',
+  'sara', 'tartaglia',
+  'venti',      'yoimiya'
+]
+
+catalystusers=[
+  'barbara',
+  'klee',
+  'lisa',
+  'mona',
+  'ningguang',
+  'kokomi',
+  'sucrose',
+  'yae',
+  'yanfei'
+]
+
+claymoreusers=[
+  'itto',
+  'beidou',
+  'chongyun',
+  'diluc',
+  'eula',
+  'noelle',
+]
+
+polearmusers=[
+  'hutao',
+  'raiden',
+  'rosaria',
+  'shenhe',
+  'thoma',
+  'xiangling',
+  'xiao',
+  'yunjin',
+  'zhongli'
+]
+
+swordsusers=[
+  'albedo',
+  'bennett',
+  'jean',
+  'kazuha',
+  'kaeya',
+  'ayaka',
+  'ayato',
+  'keqing',
+  'qiqi',
+  'xingqiu'
+]
+
+
+
+
+
 
 
 # %%
@@ -32,20 +90,29 @@ character=(os.path.basename(configf)).replace(".txt","")
 print(character)
 
 # %%
-match weapontype:
-    case "1":
-        weapons=bows
-    case "2":
-        weapons=catalysts
-    case "3":
-        weapons=claymores
-    case "4":
-        weapons=polearms
-    case "5":
-        weapons=swords
-    case _:
-        print("Invalid weapontype, input ONLY the number please")
+def classifyweapon(character):
+    if character in bowusers:weapons=bows
+    elif character in catalystusers:weapons=catalysts
+    elif character in claymoreusers:weapons=claymores
+    elif character in polearmusers:weapons=polearms
+    elif character in swordsusers:weapons=swords
+    else:
+        weapontype = easygui.enterbox("Please input the type of weapon to do the comparison with:\n1 for bows\n2 for catalysts\n3 for claymores\n4 for polearms\n5 for swords" ,"Enter your weapon type (NUMBER ONLY)")
+        if weapontype == "1":
+            weapons=bows
+        if weapontype ==  "2":
+            weapons=catalysts
+        if weapontype == "3":
+            weapons=claymores
+        if weapontype== "4":
+            weapons=polearms
+        if weapontype== "5":
+            weapons=swords
+        else:
+            print("Invalid weapontype, input ONLY the number please")
 
+    return weapons
+weapons=classifyweapon(character)
 print(weapons)
 
 # %%

@@ -1,0 +1,59 @@
+options swap_delay=12 debug=true iteration=1000 duration=168 workers=30 mode=sl;
+
+hutao char lvl=90/90 cons=0 talent=9,9,9 start_hp=1;
+hutao add weapon="dragonsbane" refine=3 lvl=90/90;
+hutao add set="crimsonwitchofflames" count=4;
+hutao add stats hp=4780 atk=311 em=187 cr=0.311 pyro%=0.466 ; #main
+hutao add stats def%=0.124 def=39.36 hp=507.88 hp%=0.1984 atk=33.08 atk%=0.0992 er=0.1102 em=39.64 cr=0.331 cd=0.7944;
+
+xingqiu char lvl=90/90 cons=6 talent=9,9,9;
+xingqiu add weapon="favoniussword" refine=3 lvl=90/90;
+xingqiu add set="emblemofseveredfate" count=4;
+xingqiu add stats hp=4780 atk=311 atk%=0.466 cr=0.311 hydro%=0.466 ; #main
+xingqiu add stats def%=0.124 def=39.36 hp=507.88 hp%=0.0992 atk=33.08 atk%=0.0992 er=0.2204 em=39.64 cr=0.331 cd=0.7944;
+
+yaemiko char lvl=90/90 cons=0 talent=9,9,9; 
+yaemiko add weapon="thewidsith" refine=3 lvl=90/90;
+yaemiko add set="tenacityofthemillelith" count=4;
+yaemiko add stats hp=4780 atk=311 atk%=0.466 cr=0.311 electro%=0.466 ; #main
+yaemiko add stats def%=0.124 def=39.36 hp=507.88 hp%=0.0992 atk=33.08 atk%=0.1984 er=0.1102 em=39.64 cr=0.331 cd=0.7944;
+
+fischl char lvl=90/90 cons=6 talent=9,9,9;
+fischl add weapon= "thestringless" refine=5 lvl=90/90;
+fischl add set="thunderingfury" count=2;
+fischl add set="shimenawasreminiscence" count=2;
+fischl add stats hp=4780 atk=311 atk%=0.466 electro%=0.466 cr=0.311;
+fischl add stats def%=0.124 def=39.36 hp=507.88 hp%=0.0992 atk=33.08 atk%=0.1984 er=0.1102 em=39.64 cr=0.331 cd=0.7944;
+
+
+target lvl=100 resist=0.1;
+energy every interval=480,720 amount=1;
+
+active xingqiu;
+
+yaemiko skill:3;
+xingqiu skill, burst, attack:1;
+fischl burst;
+hutao skill, attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:1, charge, burst;
+
+yaemiko attack,skill,attack,skill,attack,skill,attack:3, dash, attack:3;
+xingqiu skill, burst, attack:1;
+yaemiko burst,attack,skill,attack,skill, attack,skill, attack;
+fischl skill,attack;
+hutao skill, attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump,
+    attack:2, charge, jump;
+yaemiko attack;
+restart;
