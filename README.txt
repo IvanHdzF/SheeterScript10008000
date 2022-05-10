@@ -10,3 +10,6 @@ on the root folder (CMD)
 3.-Add the most recent gcsim.exe on the root
 4.-Run
 python SS18.py
+
+create button writes the files you will need depending on the options of the list you enable 
+opt n' run lets you select which files you want to optimize, run, and potentially export to Excel
