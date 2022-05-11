@@ -143,12 +143,11 @@ def writeconfig(weapons,refinements,sands,goblets,circlets):
                 for goblet in goblets:
                     for circlet in circlets:
 
-                        newlist=re.sub("("+character+" add weapon)(.*)",""+character+" add weapon= \""+weapon+"\" refine="+refinement+" lvl=90/90;", list_contents) #substitute the readed config with the new weapon
-                        finallist=re.sub("("+character+" add stats hp=4780)(.*)",""+character+" add stats hp=4780 atk=311 "+sand+" "+goblet+" "+circlet+";", newlist) #substitute the readed config with the new weapon
+                        subweapon=re.sub("(?<="+character+" add weapon=\")(.*)(?=\")",weapon, list_contents) #substitute the readed config with the new weapon
+                        subrefine=re.sub("(?<="+character+" add weapon=\""+weapon+"\" refine=)(.*)(?= lvl)",refinement, subweapon)#substitute refinements
+                        finallist=re.sub("("+character+" add stats hp=4780)(.*)",""+character+" add stats hp=4780 atk=311 "+sand+" "+goblet+" "+circlet+";", subrefine) #substitute the readed config with the new weapon
 
                         my_file = open(configpath+"//_"+weapon+" R"+refinement+" "+sand.split('=',1)[0]+"-"+goblet.split('=',1)[0]+"-"+circlet.split('=',1)[0]+".txt", "w")
-                        new_file_contents = "".join(string_list)
-                        #Convert `string_list` to a single string
 
                         my_file.write(finallist)
                         my_file.close()
@@ -241,6 +240,13 @@ def optimize():
         return
     optrun.run(character,pathnames)
 
+def justrun():
+    pathnames=easygui.fileopenbox("Please input file(s) to be optimized", "OPTIMIZER", filetypes= "*.txt", multiple=True, default=configpath+"\\*.txt")
+    if pathnames is None:
+        return
+
+    optrun.run(character,pathnames)
+
 def create():
     selectedweapons = [weaponslist.get(i) for i in weaponslist.curselection()]
     selectedrefinements=[refinementslist.get(i) for i in refinementslist.curselection()]
@@ -265,8 +271,14 @@ btn1.grid(column=0, row=3)
 btn2 = ttk.Button(frame5, text="Create", command=create)
 btn2.grid(column=0, row=2, pady=30)
 
-btn3 = ttk.Button(frame5, text="Opt n' run", command=optimize)
-btn3.grid(column=0, row=3)
+frame6 = ttk.Frame(main, padding=(3, 3, 12, 12))
+frame6.grid(column=6, row=0, sticky=(N, S, E, W))
+
+btn3 = ttk.Button(frame6, text="Opt n' run", command=optimize)
+btn3.grid(column=0, row=0, pady=30)
+
+btn4 = ttk.Button(frame6, text="Just run", command=justrun)
+btn4.grid(column=0, row=1)
 
 status=ttk.Label(frame,text="Status")
 status.grid(column=0, row=4, sticky=(N, S, E, W))

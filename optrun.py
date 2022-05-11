@@ -126,8 +126,6 @@ def run(character,pathnames):
 
         print(df)
 
-        print(df)
-
         exportExcel=easygui.buttonbox("Do you want to export the results to Excel?", choices=["Yes","No"])
         if exportExcel=="Yes":
             df.to_excel(""+character+".xlsx")
